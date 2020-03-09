@@ -19,6 +19,47 @@
 <body>
 
 <fieldset>
+    <legend align="center">已留作业</legend>
+    <table align="center" width="960" border="1"
+           bgcolor="black" cellpadding="1" cellspacing="1">
+        <tr align="center" height="30" bgcolor="#5f9ea0">
+            <td>作业编号</td>
+            <td>作业题目</td>
+        </tr>
+
+        <%
+            List<Homework> listh=(List<Homework>) HomeworkJdbc.selectAll();
+            //List<StudentHomework> list=(List<StudentHomework>) request.getAttribute("list");
+
+            if(null==listh||listh.size()<=0){
+                out.println("None data.");
+            }
+            else{
+                for (Homework sh:listh){
+
+        %>
+
+        <tr align="center" bgcolor="white">
+            <td><%=sh.getHomeworkid()%></td>
+            <td><%=sh.getHomeworktitle()%></td>
+        </tr>
+
+        <%
+                    /*
+                    out.println(sh.getId());
+                    out.println(sh.getStuid());
+                    out.println(sh.getHomeworkid());
+                    out.println(sh.getHomeworktitle());
+                    out.println(sh.getHomeworkContent());
+                    out.println(sh.getCreatetime());
+                     */
+                }
+            }
+        %>
+    </table>
+</fieldset>
+
+<fieldset>
     <legend align="center">提交作业</legend>
     <table align="center" width="960" border="1"
        bgcolor="black" cellpadding="1" cellspacing="1">
